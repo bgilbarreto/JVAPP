@@ -36,5 +36,6 @@ class insertarCliente (LoginRequiredMixin, generic.CreateView):
     model = Clientes
     template_name = 'insert_client.html'
     context_object_name = 'obj'
+    form_class = ClientForm
     login_url = 'management:login'
     success_url = reverse_lazy('management:home')
