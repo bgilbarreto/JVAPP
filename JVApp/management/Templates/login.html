@@ -1,0 +1,40 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en" style="height: 100%">
+<head>
+    <meta charset="UTF-8">
+    <title>Login</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link href="{% static 'style.css' %}" rel="stylesheet">
+</head>
+<body style="height: 100%">
+<main style="height: 100%;">
+    <section class="section_login">
+        <div class="cja_imagenLogin">
+            <img src="{% static 'Imagenes/imagen_login.png' %}" alt="">
+        </div>
+        <div class="container_formLogin">
+            <div class="inner_formLogin">
+                <h1>
+                    Administración
+                </h1>
+
+                <form method="post">
+                     {% csrf_token %} <!--Toquén de seguirad para django -->
+                        <div class="form-group">
+                            <input class="form-control" placeholder="Username" type="text" name="username" id="id_username" autofocus>
+                        </div>
+
+                        <div class="form-group">
+                             <input class="form-control" placeholder="Password" type="password" name="password" id="id_password"autofocus>
+                        </div>
+                        <button type="submit" class=" btn  btn-block" >Login</button>
+
+                </form>
+
+            </div>
+        </div>
+    </section>
+</main>
+</body>
+</html>
