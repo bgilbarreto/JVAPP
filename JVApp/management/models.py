@@ -27,6 +27,7 @@ class Actividad (models.Model):
     estado = models.CharField(max_length=20)
 
 class Clientes (models.Model):
+    cedula = models.IntegerField(primary_key=True)
     nombre = models.CharField(max_length=60)
     apellido = models.CharField(max_length=60)
     correo = models.CharField(max_length=70)
