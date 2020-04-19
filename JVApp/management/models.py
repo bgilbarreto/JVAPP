@@ -24,7 +24,7 @@ class Tiendas (models.Model):
     ciudad = models.ForeignKey(Ciudades, on_delete = models.CASCADE)
 
 class Actividad (models.Model):
-    estado = models.CharField(max_length=20)
+    estado = models.CharField(max_length=20, null = False)
 
 class Clientes (models.Model):
     nombre = models.CharField(max_length=60)
@@ -33,7 +33,7 @@ class Clientes (models.Model):
     edad = models.IntegerField(max_length=2)
     peso = models.IntegerField(max_length=3)
     estatura = models.IntegerField(max_length=3)
-    estado = models.ForeignKey(Actividad, on_delete = models.CASCADE)
+    estado = models.ForeignKey(Actividad, on_delete = models.CASCADE, null = False)
    
 
 class Ubicaciones (models.Model):

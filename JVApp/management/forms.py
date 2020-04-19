@@ -23,7 +23,7 @@ class ciudadForm (forms.ModelForm):
 
 class FKActivy (forms.ModelChoiceField):
     def label_from_instance(self, obj):
-        return "{}".format(obj.estado)
+        return "{} {}".format(obj.id, obj.estado)
 
 class ClientForm(forms.ModelForm):
     estado_id = FKActivy(queryset=Actividad.objects.order_by('id'))
@@ -32,7 +32,6 @@ class ClientForm(forms.ModelForm):
         fields = ['nombre', 'apellido', 'correo', 'edad', 'peso', 'estatura', 'estado_id']
         labels = {'nombre': 'Nombre', 'apellido': 'Apellido', 'correo': 'Correo', 'edad': 'Edad', 'peso':'Peso', 'estatura':'Estatura'}
         widgets = {'nombre': forms.TextInput(), 'apellido': forms.TextInput(), 'correo': forms.TextInput(), 'edad': forms.TextInput(), 'peso': forms.TextInput(), 'estatura': forms.TextInput()}
-
 
     def __init__(self,*args,**kwargs):
         super().__init__(*args,**kwargs)
