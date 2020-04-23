@@ -88,3 +88,4 @@ class insertCathegory (forms.ModelForm):
            self.fields[field].widget.attrs.update({
                'class':'from-control'
            })
+           

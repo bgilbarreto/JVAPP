@@ -91,6 +91,19 @@ class eliminarProducto (LoginRequiredMixin, generic.DeleteView):
     form_class = insertProductForm
     success_url = reverse_lazy('management:listarProducto')
 
+class seacrhByProduct (LoginRequiredMixin, TemplateView):
+    def post(self, request, *args, **kwargs):
+        nombre = request.POST['datoBusqueda']
+        nombres = Productos.objects.filter(nombre__contains=nombre)
+        precios = Productos.objects.filter(precio__contains=nombre)
+        ids = Productos.objects.filter(id__contains=nombre)
+        if nombres:
+            return render(request, 'buscarProducto.html', {'nombres':nombres, 'nombre':True})
+        elif precios:
+            return render(request, 'buscarProducto.html', {'precios':precios, 'precio':True})
+        else:
+            return render(request, 'buscarProducto.html', {'ids':ids, 'id':True})
+
 # Vistas de Envios
 
 class listaEnvios (LoginRequiredMixin, generic.ListView):
@@ -110,6 +123,7 @@ class insertarTiendas (LoginRequiredMixin, generic.CreateView):
     success_url = reverse_lazy('management:listarProducto')
 
 # Vistas de Categorias
+
 class insertarCategoria (LoginRequiredMixin, generic.CreateView):
     model = Tipo_Producto
     template_name = 'insert_cath.html'

@@ -1,7 +1,7 @@
 from django.contrib import admin
 from django.urls import include, path
 from management.views import Home, listarProductos, insertarCliente, borrarCliente, editarCliente, insertarProducto, insertarCategoria
-from management.views import editarProducto, eliminarProducto, insertarTiendas
+from management.views import editarProducto, eliminarProducto, insertarTiendas, seacrhByProduct
 from management.views import listaEnvios, seacrhByName
 from django.contrib.auth import views as auth_views
 
@@ -20,6 +20,7 @@ urlpatterns = [
     path('listar_productos/',listarProductos.as_view(), name= 'listarProducto'),
     path('editar/producto<int:pk>', editarProducto.as_view(), name='editar_producto'),
     path('delete/product<int:pk>', eliminarProducto.as_view(), name= 'delete_product'),
+    path('searchProduct/', seacrhByProduct.as_view(), name='search_product'),
     #path's de Categorias, Tiendas y Envios
     path('lst_package/', listaEnvios.as_view(), name='lst_pckg'),
     path('add_store/', insertarTiendas.as_view(), name= 'insert_store'),

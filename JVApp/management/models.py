@@ -65,7 +65,7 @@ class Compras_Envios (models.Model):
     cliente = models.ForeignKey(Clientes, on_delete = models.CASCADE)
     entidad_bancaria = models.ForeignKey(Entidades_Bancarias, on_delete = models.CASCADE)
     tipo_envio = models.ForeignKey(Tipos_Envio, on_delete = models.CASCADE)
-    num_referencia = models.IntegerField(max_length=12)
+    num_referencia = models.IntegerField(max_length=12, null=True)
     fech_pedido = models.DateField
     fech_envio = models.DateField
     costo_total = models.IntegerField(max_length=7)
