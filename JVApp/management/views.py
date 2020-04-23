@@ -4,8 +4,9 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 from management.forms import insertClientForm, insertProductForm, insertStore, insertCathegory
 from django.urls import reverse_lazy
 from management.models import Productos, Compras_Envios, Tiendas
-from management.models import Clientes, Tipo_Producto
+from management.models import Clientes, Tipo_Producto, Producto_X_Compra
 from django.views.generic import TemplateView
+from django.http import Http404
 
 # Create your views here.
 
@@ -111,6 +112,12 @@ class listaEnvios (LoginRequiredMixin, generic.ListView):
     template_name = 'list_packages.html'
     context_object_name = 'obj'
     login_url = 'management:login'
+
+class verDetalle (LoginRequiredMixin, generic.DetailView):
+    model = Producto_X_Compra
+    template_name = 'ver_detalle.html'
+    login_url = 'management:login'
+    context_object_name = 'obj'
 
 # Vistas de Tiendas
 

@@ -39,7 +39,6 @@ Inventario
             <th class="column_priceSale">Precio/Venta</th>
             <th class="column_size">Cantidad</th>
             <th class="column_cathegory">Categoria</th>
-            <th class="column_store">Sucursal</th>
             <th class="column_img">Imagen</th>
             <th class="column_actions">Acciones</th>
         </tr>
@@ -49,11 +48,10 @@ Inventario
         <tr class="fila_dato">
             <td class="column_IdProduct">{{ product.id }}</td>
             <td class="column_nameProduct">{{ product.nombre }}</td>
-            <td class="column_price">{{ product.precio }}</td>
-            <td class="column_priceSale">{{ product.precio_venta }}</td>
+            <td class="column_price">${{ product.precio }}</td>
+            <td class="column_priceSale">${{ product.precio_venta }}</td>
             <td class="column_size">{{ product.cantidad }}</td>
             <td class="column_cathegory">{{ product.tipo_producto.nombre }}</td>
-            <td class="column_store">{{ product.tienda.nombre }}</td>
             <td><img src="{{ product.imagen.url }}" width="50" height="70"></td>
             <td class="column_actions">
                 <div><a href="{% url 'management:delete_product' product.id %}">Eliminar</a></div>
