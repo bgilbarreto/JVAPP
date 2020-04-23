@@ -1,10 +1,11 @@
+  
 {% load static %}
 <!DOCTYPE html>
 <html lang="en" style="height: 100%">
 <head>
     <meta charset="UTF-8">
        <title>
-           Eliminar Cliente
+           Nueva Sucursal
        </title>
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <link href="{% static 'style.css' %}" rel="stylesheet">
@@ -13,22 +14,21 @@
 <main class="main_formProduct">
     <section class="container_formProduct">
         <div class="iner_formProduct">
-            <h3>Eliminar Cliente</h3>
-            <form method="post" class="form_product">
+            <h3>Registro de Nueva Sucursal</h3>
+            <form method="post" enctype="multipart/form-data" class="form_product">
                 {% csrf_token %}
-              <div>
-                  <h2>Eliminar {{ clients.name }}</h2>
-              </div>
+                {{ form.as_p }}
             <button type="submit" class="btn">
-                <span class="fa fa-delete">
-                    Eliminar
+                <span class="fa ">
+                    Guardar
                 </span>
             </button>
-                <a href="{% url 'management:home' %}" class="btn btn-success">
-                    <span class="fa fa-undo">
-                        Regresar
-                    </span>
-                </a>
+
+            <a href="{% url 'management:listarProducto' %}" class="btn btn-success">
+                <span class="fa fa-undo">
+                    Regresar
+                </span>
+            </a>
             </form>
 
         </div>

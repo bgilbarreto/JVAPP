@@ -13,7 +13,7 @@
 <main class="main_formProduct">
     <section class="container_formProduct">
         <div class="iner_formProduct">
-            <h3>Crear Cliente</h3>
+            <h3>Crear Y/O Editar Cliente</h3>
             <form method="post" class="form_product">
                 {% csrf_token %}
                 {{ form.as_p }}
@@ -22,6 +22,12 @@
                     Guardar
                 </span>
             </button>
+            <a href="{% url 'management:home'%}" class="btn btn-success">
+                <span class="fa fa-undo">
+                    Regresar
+                </span>
+            </a>
+
             </form>
 
         </div>

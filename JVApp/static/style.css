@@ -332,12 +332,7 @@ table
     width: 100%;
     height: 100%;
 }
-.footer 
+.busquedaBoton
 {
- background-color: #00f;
- position: fixed;
- bottom: 0;
- width: 100%;
- height: 100px;
-
+    background-image: url('Imagenes/search.png');
 }

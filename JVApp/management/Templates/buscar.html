@@ -1,0 +1,92 @@
+{% extends 'Base/base.html' %}
+
+{% block title %}
+Resultados de Busqueda
+{% endblock %}
+
+{% block contenido %}
+
+<section class="adminProduct">
+
+<div class="searchAdd_box">
+
+    <div class="search_box">
+        <form class="navbar-search pull-left" method="POST" action="{% url 'management:buscarNombre' %}">
+             {% csrf_token %}
+             <svg xmlns="http://www.w3.org/2000/svg" width="28.951" height="29.008" viewBox="0 0 28.951 29.008"><defs><style>.lupa{fill:#652680;}</style></defs><g transform="translate(-0.5)"><path class="lupa" d="M20.539,12.238A7.511,7.511,0,0,0,18.273,6.7a7.52,7.52,0,0,0-5.535-2.266A7.52,7.52,0,0,0,7.2,6.7a7.52,7.52,0,0,0-2.266,5.535A7.52,7.52,0,0,0,7.2,17.773a7.52,7.52,0,0,0,5.535,2.266,7.52,7.52,0,0,0,5.535-2.266A7.923,7.923,0,0,0,20.539,12.238Zm8.912,14.5a2.16,2.16,0,0,1-.686,1.581,2.082,2.082,0,0,1-1.581.686,1.993,1.993,0,0,1-1.581-.686l-5.909-6.011a11.81,11.81,0,0,1-6.963,2.164,11.9,11.9,0,0,1-4.748-.952,11.388,11.388,0,0,1-3.9-2.634,14.464,14.464,0,0,1-2.634-3.9A12.389,12.389,0,0,1,.5,12.238,12.105,12.105,0,0,1,1.452,7.49a11.388,11.388,0,0,1,2.634-3.9A14.464,14.464,0,0,1,7.99.952,12.262,12.262,0,0,1,12.732,0,12.105,12.105,0,0,1,17.48.952a11.388,11.388,0,0,1,3.9,2.634,14.464,14.464,0,0,1,2.634,3.9A12.3,12.3,0,0,1,22.805,19.2l5.96,5.955A2.012,2.012,0,0,1,29.451,26.742Z"/></g></svg>
+             <input type="text" placeholder="Buscar.." name="datoBusqueda">  
+             <button class="btn btn-info" type="submit" id ="busquedaBoton">Buscar</button>
+        </form>
+    </div>
+ 
+     <div class="add_box">
+         <button  type="button" class="productAdd_btn btn ">
+              <a href="{% url 'management:insertar_cliente' %}">Agregar</a>
+         </button>
+     </div>
+ 
+ </div>
+
+ <div class="cja_listDatos">
+    <table class="list_product">
+    <tr class="fila_titulos">
+        <th class="column_IdProduct">N.Identificación</th>
+        <th class="column_nameProduct">Nombre</th>
+        <th class="column_email">Apellido</th>
+        <th class="column_priceSale">Email</th>
+        <th class="column_size">Telefono</th>
+        <th class="column_actions">Acciones</th>
+    </tr>
+    {% if nombre %}
+    {% for nombre in nombres %}
+    <tr class="fila_datoClient">
+        <th class="column_IdProduct">{{ nombre.cedula }}</th>
+        <th class="column_nameProduct">{{ nombre.nombre }}</th>
+        <th class="column_price">{{ nombre.apellido }}</th>
+        <th class="column_priceSale">{{ nombre.correo }}</th>
+        <th class="column_size">{{ nombre.numero }}</th>
+        <th class="column_actions">
+            <div><a href="{% url 'management:delete_client' nombre.cedula %}">Eliminar</a></div>
+            <div><a href="{% url 'management:editar_cliente' nombre.cedula %}">Editar</a></div>
+        </th>
+    </tr>
+    {% endfor %}
+    {% endif %}
+
+    {% if apellido %}
+    {% for apellido in apellidos %}
+    <tr class="fila_datoClient">
+        <th class="column_IdProduct">{{ apellido.cedula }}</th>
+        <th class="column_nameProduct">{{ apellido.nombre }}</th>
+        <th class="column_price">{{ apellido.apellido }}</th>
+        <th class="column_priceSale">{{ apellido.correo }}</th>
+        <th class="column_size">{{ apellido.numero }}</th>
+        <th class="column_actions">
+            <div><a href="{% url 'management:delete_client' apellido.cedula %}">Eliminar</a></div>
+            <div><a href="{% url 'management:editar_cliente' apellido.cedula %}">Editar</a></div>
+        </th>
+    </tr>
+    {% endfor %}
+    {% endif %}
+
+    {% if documento %}
+    {% for documento in documentos %}
+    <tr class="fila_datoClient">
+        <th class="column_IdProduct">{{ documento.cedula }}</th>
+        <th class="column_nameProduct">{{ documento.nombre }}</th>
+        <th class="column_price">{{ documento.apellido }}</th>
+        <th class="column_priceSale">{{ documento.correo }}</th>
+        <th class="column_size">{{ documento.numero }}</th>
+        <th class="column_actions">
+            <div><a href="{% url 'management:delete_client' documento.cedula %}">Eliminar</a></div>
+            <div><a href="{% url 'management:editar_cliente' documento.cedula %}">Editar</a></div>
+        </th>
+    </tr>
+    {% endfor %}
+    {% endif %}
+    </table>
+</div>
+
+</section>
+
+{% endblock contenido %}

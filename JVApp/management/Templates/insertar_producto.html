@@ -1,43 +1,39 @@
-<!doctype html>
-<html lang="es">
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="">
-    <meta name="author" content="">
-   
-
-    <title> Menu Pricipal </title>
-
-    <link rel="canonical" href="https://getbootstrap.com/docs/4.0/examples/navbars/">
-
-	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <!-- Bootstrap core CSS -->
-    <link href="../../dist/css/bootstrap.min.css" rel="stylesheet">
-
-    <!-- Custom styles for this template -->
-    <link href="navbar.css" rel="stylesheet">
-    <link rel = StyleSheet href="static/style.css" type="text/css">
-	 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-
+  
+{% load static %}
+<!DOCTYPE html>
+<html lang="en" style="height: 100%">
+<head>
+    <meta charset="UTF-8">
+       <title>
+           Nuevo Producto
+       </title>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link href="{% static 'style.css' %}" rel="stylesheet">
 </head>
-
-<body style = "background-image : url(http://www.fondosblackberry.com/user-content/uploads/wall/o/91/purple_c8bfe7.jpg)">
-    <form method="post">
-        <div class="panel-body">
-            {%csrf_token%}
-            {{form.as_p}}
-            <button type="submit" class="btn btn-danger">
-                <span class="fa fa-save">
+<body style="height: 100%">
+<main class="main_formProduct">
+    <section class="container_formProduct">
+        <div class="iner_formProduct">
+            <h3>Crear Y/O Editar Productos</h3>
+            <form method="post" enctype="multipart/form-data" class="form_product">
+                {% csrf_token %}
+                {{ form.as_p }}
+            <button type="submit" class="btn">
+                <span class="fa ">
                     Guardar
                 </span>
             </button>
-        </div>
-    </form>
-</body>
 
+            <a href="{% url 'management:listarProducto' %}" class="btn btn-success">
+                <span class="fa fa-undo">
+                    Regresar
+                </span>
+            </a>
+
+            </form>
+
+        </div>
+    </section>
+</main>
+</body>
 </html>

@@ -22,6 +22,7 @@ class Tiendas (models.Model):
     nombre = models.CharField(max_length=40)
     caracteristicas = models.CharField(max_length=100)
     ciudad = models.ForeignKey(Ciudades, on_delete = models.CASCADE)
+    direccion = models.CharField(max_length=100)
 
 class Actividad (models.Model):
     estado = models.CharField(max_length=20)
@@ -34,17 +35,12 @@ class Clientes (models.Model):
     edad = models.IntegerField(max_length=2)
     peso = models.IntegerField(max_length=3)
     estatura = models.IntegerField(max_length=3)
+    numero = models.CharField(max_length=10)
     estado = models.ForeignKey(Actividad, on_delete = models.CASCADE)
-   
 
 class Ubicaciones (models.Model):
     cedula = models.ForeignKey(Clientes, on_delete = models.CASCADE)
-    tienda = models.ForeignKey(Tiendas, on_delete = models.CASCADE, unique = True)
     direccion = models.CharField(max_length=70)
-
-class Celulares (models.Model):
-    cedula = models.ForeignKey(Clientes, on_delete = models.CASCADE)
-    numero = models.IntegerField(max_length=10)
 
 class Telefonos (models.Model):
     cedula = models.ForeignKey(Clientes, on_delete = models.CASCADE)
@@ -63,6 +59,7 @@ class Productos (models.Model):
     cantidad = models.IntegerField(max_length=3)
     precio_venta = models.IntegerField(max_length=6)
     caracteristicas = models.CharField(max_length=100)
+    imagen = models.ImageField(upload_to="productos", null=True)
 
 class Compras_Envios (models.Model):
     cliente = models.ForeignKey(Clientes, on_delete = models.CASCADE)
