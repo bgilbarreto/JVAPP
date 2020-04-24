@@ -29,7 +29,13 @@ Detalles de envio
                             <th class="column_price">Precio</th>
                             <th class="column_Image">Imagen</th>
                         </tr>
-
+                        <tbody>
+                            <tr class="fila_dato">
+                                <td class="column_namePckg">{{ obj.compra_envio.num_referencia }}</td>
+                                <td class="column_price">{{ obj.compra_envio.cliente.nombre }}</td>
+                                <td><img src="{{ obj.producto.imagen.url }}" width="50" height="70"></td>
+                            </tr>
+                        </tbody>
                         </table>
                     </div>
                 </div>

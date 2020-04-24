@@ -17,7 +17,6 @@ Historial de Envios
         <table class="list_product">
         <tr class="fila_titulos">
             <th class="column_namePckg">Referencia</th>
-            <th class="column_price">Costo Total</th>
             <th class="column_ClientID">Nombre</th>
             <th class="column_ClientID">Apellido</th>
             <th class="column_ClientName">CC Cliente</th>
@@ -28,7 +27,6 @@ Historial de Envios
         
         <tr class="fila_dato">
             <td class="column_namePckg">{{ package.num_referencia }}</td>
-            <td class="column_price">{{ package.costo_total }}</td>
             <td class="column_ClientID">{{ package.cliente.nombre }}</td>
             <td class="column_ClientID">{{ package.cliente.apellido }}</td>
             <th class="column_ClientName">{{ package.cliente.cedula }}</th>
