@@ -2,7 +2,7 @@ from django.contrib import admin
 from django.urls import include, path
 from management.views import Home, listarProductos, insertarCliente, borrarCliente, editarCliente, insertarProducto, insertarCategoria
 from management.views import editarProducto, eliminarProducto, insertarTiendas, seacrhByProduct
-from management.views import listaEnvios, seacrhByName, verDetalle
+from management.views import listaEnvios, seacrhByName, verDetalle, consultaDetalle
 from django.contrib.auth import views as auth_views
 
 urlpatterns = [
