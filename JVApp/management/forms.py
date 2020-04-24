@@ -19,7 +19,7 @@ class insertClientForm (forms.ModelForm):
        super().__init__ (*args,**kwargs)
        for field in iter(self.fields):
            self.fields[field].widget.attrs.update({
-               'class':'from-control'
+               'class':'from-control', 'autocomplete': 'off', 'spellcheck':'false'
            }) 
            self.fields['estado'].label = 'Condicion Fisica del cliente'
 
@@ -46,7 +46,7 @@ class insertProductForm (forms.ModelForm):
        super().__init__ (*args,**kwargs)
        for field in iter(self.fields):
            self.fields[field].widget.attrs.update({
-               'class':'from-control'
+               'class':'from-control', 'autocomplete': 'off', 'spellcheck':'false'
            }) 
            self.fields['tienda'].label = 'Ubicacion actual del producto'
            self.fields['tipo_producto'].label = 'Categoria del producto'
@@ -69,7 +69,7 @@ class insertStore (forms.ModelForm):
        super().__init__ (*args,**kwargs)
        for field in iter(self.fields):
            self.fields[field].widget.attrs.update({
-               'class':'from-control'
+               'class':'from-control', 'autocomplete': 'off', 'spellcheck':'false'
            })
            self.fields['ciudad'].label = 'Ciudad de Ubicacion' 
 
@@ -86,6 +86,6 @@ class insertCathegory (forms.ModelForm):
        super().__init__ (*args,**kwargs)
        for field in iter(self.fields):
            self.fields[field].widget.attrs.update({
-               'class':'from-control'
+               'class':'from-control', 'autocomplete': 'off', 'spellcheck':'false'
            })
            
