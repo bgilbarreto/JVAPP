@@ -114,22 +114,26 @@ class listaEnvios (LoginRequiredMixin, generic.ListView):
     login_url = 'management:login'
 
 class verDetalle (LoginRequiredMixin, generic.DetailView):
-    model = Producto_X_Compra
+    model = Compras_Envios
     template_name = 'ver_detalle.html'
     login_url = 'management:login'
     context_object_name = 'obj'
 
-def consultaDetalle (request, pk):
-    from django.db import connection
-    with connection.cursor() as cursor:
-        cursor.execute("select e.id, e.fech_pedido, e.fech_envio, e.cliente_id, cl.nombre, cl.apellido, cl.numero, pr.nombre, pr.precio, pr.imagen from management_compras_envios e, management_clientes cl, management_producto_x_compra n, management_productos pr where e.cliente_id = cl.cedula and e.id = "+str(pk)+" and n.compra_envio_id = e.id and pr.id = n.producto_id")
-        rawData = cursor.fetchall()
-        result = []
-        for r in rawData:
-            print(r)
-            result.append(list(r))
-        contexto = {'consultas':result}
-    return render(request, 'ver_detalle.html', contexto)
+class verProductosDetalle (LoginRequiredMixin, TemplateView):
+    template_name = 'ver_Productos.html'
+    login_url = 'management:login'
+
+#def consultaDetalle (request, pk):
+    #from django.db import connection
+    #with connection.cursor() as cursor:
+        #cursor.execute("select e.id, e.fech_pedido, e.fech_envio, e.cliente_id, cl.nombre, cl.apellido, cl.numero, pr.nombre, pr.precio, pr.imagen from management_compras_envios e, management_clientes cl, management_producto_x_compra n, management_productos pr where e.cliente_id = cl.cedula and e.id = "+str(pk)+" and n.compra_envio_id = e.id and pr.id = n.producto_id")
+        #rawData = cursor.fetchall()
+        #result = []
+        #for r in rawData:
+            #print(r)
+            #result.append(list(r))
+        #contexto = {'consultas':result}
+    #return render(request, 'ver_detalle.html', contexto)
 
 # Vistas de Tiendas
 

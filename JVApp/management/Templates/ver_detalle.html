@@ -13,31 +13,15 @@ Detalles de envio
                 <div class="iner_formProduct">
                     <h3>Detalle de envio: {{ obj.compra_envio.num_referencia }}</h3>
 
-                    <h4><strong>Pedido #</strong> {{ obj.compra_envio.id }}</h4>
-                    <h4><strong>Fecha de pedido:</strong> {{ obj.compra_envio.fech_pedido|date:'d/m/Y' }}</h4>
-                    <h4><strong>Fecha de Entrega Estimada:</strong> {{ obj.compra_envio.fech_envio|date:'d/m/Y' }}</h4>
-                    <h4><strong>Cedula del cliente </strong> {{ obj.compra_envio.cliente.cedula }}</h4>
-                    <h4><strong>Nombre del cliente cliente </strong> {{ obj.compra_envio.cliente.nombre }} {{ obj.compra_envio.cliente.apellido }}</h4>
-                    <h4><strong>Telefono</strong> {{ obj.compra_envio.cliente.numero }}</h4>
+                    <h4><strong>Pedido #</strong> {{ obj.id }}</h4>
+                    <h4><strong>Fecha de pedido:</strong> {{ obj.fech_pedido|date:'d/m/Y' }}</h4>
+                    <h4><strong>Fecha de Entrega Estimada:</strong> {{ obj.fech_envio|date:'d/m/Y' }}</h4>
+                    <h4><strong>Cedula del cliente </strong> {{ obj.cliente.cedula }}</h4>
+                    <h4><strong>Nombre del cliente cliente </strong> {{ obj.cliente.nombre }} {{ obj.compra_envio.cliente.apellido }}</h4>
+                    <h4><strong>Telefono</strong> {{ obj.cliente.numero }}</h4>
 
                     <h3>Productos de envio:</h3>
-
-                    <div class="cja_listDatos">
-                        <table class="list_product">
-                        <tr class="fila_titulos">
-                            <th class="column_namePckg">Producto</th>
-                            <th class="column_price">Precio</th>
-                            <th class="column_Image">Imagen</th>
-                        </tr>
-                        <tbody>
-                            <tr class="fila_dato">
-                                <td class="column_namePckg">{{ obj.producto.nombre }}</td>
-                                <td class="column_price">${{ obj.producto.precio }}</td>
-                                <td><img src="{{ obj.producto.imagen.url }}" width="50" height="70"></td>
-                            </tr>
-                        </tbody>
-                        </table>
-                    </div>
+                        <button class="btn btn-info" type="submit" id ="busquedaBoton"><a href="{% url 'management:detail_sell' %}" >Ver Productos de la Orden</a></button>
                 </div>
             </section>
         </main>

@@ -2,7 +2,7 @@ from django.contrib import admin
 from django.urls import include, path
 from management.views import Home, listarProductos, insertarCliente, borrarCliente, editarCliente, insertarProducto, insertarCategoria
 from management.views import editarProducto, eliminarProducto, insertarTiendas, seacrhByProduct
-from management.views import listaEnvios, seacrhByName, verDetalle, consultaDetalle
+from management.views import listaEnvios, seacrhByName, verDetalle, verProductosDetalle
 from django.contrib.auth import views as auth_views
 
 urlpatterns = [
@@ -24,6 +24,7 @@ urlpatterns = [
     #path's de Categorias, Tiendas y Envios
     path('lst_package/', listaEnvios.as_view(), name='lst_pckg'),
     path('detail_package/<int:pk>',verDetalle.as_view(), name='detail_package'),
+    path('products_in_sell/', verProductosDetalle.as_view(), name = 'detail_sell'),
     path('add_store/', insertarTiendas.as_view(), name= 'insert_store'),
     path('add_cathegory/', insertarCategoria.as_view(), name= 'insert_cathegory'),
 ]
