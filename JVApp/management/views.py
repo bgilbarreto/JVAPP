@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from django.views import generic
 from django.contrib.auth.mixins import LoginRequiredMixin
 from management.forms import insertClientForm, insertProductForm, insertStore, insertCathegory
@@ -7,6 +7,11 @@ from management.models import Productos, Compras_Envios, Tiendas
 from management.models import Clientes, Tipo_Producto, Producto_X_Compra
 from django.views.generic import TemplateView
 from django.http import Http404
+from django.http import JsonResponse
+from rest_framework.views import APIView
+from rest_framework.views import Response
+from .serializers import EstudianteSerializado
+from rest_framework import generics
 
 # Create your views here.
 
@@ -104,6 +109,10 @@ class seacrhByProduct (LoginRequiredMixin, TemplateView):
             return render(request, 'buscarProducto.html', {'precios':precios, 'precio':True})
         else:
             return render(request, 'buscarProducto.html', {'ids':ids, 'id':True})
+
+class listProdAPI (generics.ListCreateAPIView):
+    queryset = Productos.objects.all()
+    serializer_class = EstudianteSerializado
 
 # Vistas de Envios
 

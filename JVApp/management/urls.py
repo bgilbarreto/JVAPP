@@ -2,7 +2,7 @@ from django.contrib import admin
 from django.urls import include, path
 from management.views import Home, listarProductos, insertarCliente, borrarCliente, editarCliente, insertarProducto, insertarCategoria
 from management.views import editarProducto, eliminarProducto, insertarTiendas, seacrhByProduct
-from management.views import listaEnvios, seacrhByName, verDetalle, verProductosDetalle
+from management.views import listaEnvios, seacrhByName, verDetalle, verProductosDetalle, listProdAPI
 from django.contrib.auth import views as auth_views
 
 urlpatterns = [
@@ -21,6 +21,7 @@ urlpatterns = [
     path('editar/producto<int:pk>', editarProducto.as_view(), name='editar_producto'),
     path('delete/product<int:pk>', eliminarProducto.as_view(), name= 'delete_product'),
     path('searchProduct/', seacrhByProduct.as_view(), name='search_product'),
+    path('productosJson/',listProdAPI.as_view(), name='listar2'),
     #path's de Categorias, Tiendas y Envios
     path('lst_package/', listaEnvios.as_view(), name='lst_pckg'),
     path('detail_package/<int:pk>',verDetalle.as_view(), name='detail_package'),
