@@ -10,7 +10,7 @@ from django.http import Http404
 from django.http import JsonResponse
 from rest_framework.views import APIView
 from rest_framework.views import Response
-from .serializers import EstudianteSerializado
+from .serializers import ProductoSerializado, EnvioSerializado, ClienteSerializado
 from rest_framework import generics
 
 # Create your views here.
@@ -58,6 +58,13 @@ class seacrhByName (LoginRequiredMixin, TemplateView):
             return render(request, 'buscar.html', {'apellidos':apellidos, 'apellido':True})
         else:
             return render(request, 'buscar.html', {'documentos':documentos, 'documento':True})
+
+class listClientAPI (APIView):
+    def get(self, request):
+        clientes = Clientes.objects.all()
+        data = ClienteSerializado(clientes, many=True).data
+        return Response(data)
+
 
 # Vista de Login
 
@@ -110,9 +117,11 @@ class seacrhByProduct (LoginRequiredMixin, TemplateView):
         else:
             return render(request, 'buscarProducto.html', {'ids':ids, 'id':True})
 
-class listProdAPI (generics.ListCreateAPIView):
-    queryset = Productos.objects.all()
-    serializer_class = EstudianteSerializado
+class listProdAPI (APIView):
+    def get(self, request):
+        productos = Productos.objects.all()
+        data = ProductoSerializado(productos, many=True).data
+        return Response(data)
 
 # Vistas de Envios
 
@@ -131,6 +140,13 @@ class verDetalle (LoginRequiredMixin, generic.DetailView):
 class verProductosDetalle (LoginRequiredMixin, TemplateView):
     template_name = 'ver_Productos.html'
     login_url = 'management:login'
+
+class listEnvioAPI (APIView):
+    def get(self, request):
+        envios = Compras_Envios.objects.all()
+        data = EnvioSerializado(envios, many=True).data
+        return Response(data)
+
 
 #def consultaDetalle (request, pk):
     #from django.db import connection

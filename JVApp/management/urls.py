@@ -2,7 +2,7 @@ from django.contrib import admin
 from django.urls import include, path
 from management.views import Home, listarProductos, insertarCliente, borrarCliente, editarCliente, insertarProducto, insertarCategoria
 from management.views import editarProducto, eliminarProducto, insertarTiendas, seacrhByProduct
-from management.views import listaEnvios, seacrhByName, verDetalle, verProductosDetalle, listProdAPI
+from management.views import listaEnvios, seacrhByName, verDetalle, verProductosDetalle, listProdAPI, listEnvioAPI, listClientAPI
 from django.contrib.auth import views as auth_views
 
 urlpatterns = [
@@ -12,6 +12,7 @@ urlpatterns = [
     path('editar/cliente<int:pk>',editarCliente.as_view(), name='editar_cliente'),
     path('delete/client/<int:pk>', borrarCliente.as_view(), name= 'delete_client'),
     path('searchClient/', seacrhByName.as_view(), name='buscarNombre'),
+    path('clientesJson/',listClientAPI.as_view(), name='lst_client_json'),
     #path's de login/logout
     path('login/',auth_views.LoginView.as_view(template_name='login.html'),name='login'),
     path('logout/',auth_views.LogoutView.as_view(template_name='login.html'),name='logout'),
@@ -21,11 +22,12 @@ urlpatterns = [
     path('editar/producto<int:pk>', editarProducto.as_view(), name='editar_producto'),
     path('delete/product<int:pk>', eliminarProducto.as_view(), name= 'delete_product'),
     path('searchProduct/', seacrhByProduct.as_view(), name='search_product'),
-    path('productosJson/',listProdAPI.as_view(), name='listar2'),
+    path('productosJson/',listProdAPI.as_view(), name='lst_prod_json'),
     #path's de Categorias, Tiendas y Envios
     path('lst_package/', listaEnvios.as_view(), name='lst_pckg'),
     path('detail_package/<int:pk>',verDetalle.as_view(), name='detail_package'),
     path('products_in_sell/', verProductosDetalle.as_view(), name = 'detail_sell'),
     path('add_store/', insertarTiendas.as_view(), name= 'insert_store'),
     path('add_cathegory/', insertarCategoria.as_view(), name= 'insert_cathegory'),
+    path('tiendasJson/',listEnvioAPI.as_view(), name='lst_sended_json'),
 ]
